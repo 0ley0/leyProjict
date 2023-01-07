@@ -36,7 +36,7 @@ const index =() =>{
     return(
         <div>
             <Layout/>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="productname">Product Name</label>
                     <input type="text"
@@ -46,7 +46,25 @@ const index =() =>{
                     value={productname}></input>
                 </div>
                 <div>
-                    
+                    <label htmlFor="productdetail">Product Detail</label>
+                    <textarea name="productdatail"
+                    placeholder="Product Name"
+                    onChange={(e)=>setProductdetail(e.target.value)}
+                    value={productdetail}></textarea>
+                </div>
+                <div>
+                    <label htmlFor="stock">Stock</label>
+                    <input type="text"
+                    name="stock"
+                    placeholder="Stock"
+                    onChange={(e)=>setStock(e.target.value)}
+                    value={stock}></input>
+                </div>
+                <div><button>Add Product</button>
+                </div>
+                <div>
+                    {error ? error : <div>{error}</div>}
+                    {massage ? massage : <div>{massage}</div>}
                 </div>
             </form>
         </div>

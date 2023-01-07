@@ -31,6 +31,23 @@ export async function getServerSideProps() {
 
 const Home = (props:Props)=>{
   const [products , setpProducts] = useState<[Product]>(props.products)
+
+  const handleDelete = async(productid:String)=>{
+    try {
+      let res = await fetch('http://localhost:3000/api/delete?id=' + productid ,
+      {
+        method : 'POST' ,
+        headers: {
+          Accept:"application/json, text/plain, */*",
+                    "Content-Type" : "application/json"
+        }
+      })
+        res = await res.json();
+        window.location.reload();
+    } catch (err) {
+      console.log(err + 'not delete')
+    }
+  }
   return(
 <div>
   <Layout/>
@@ -50,7 +67,7 @@ const Home = (props:Props)=>{
               <td>{product.productdetail}</td>
               <td>{product.stock}</td>
               <td><a href={`/edit${product._id}`}>Edit</a></td>
-              <td><button>Delete</button></td>
+              <td><button onClick={()=>{handleDelete(product._id as String)}}>Delete</button></td>
             </tr>
           )
         })}
