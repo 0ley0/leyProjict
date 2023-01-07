@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import clientPromise from '../lib/mongodb'
-import { InferGetServerSidePropsType } from 'next'
 import Layout from '../components/Layout'
 import { useState } from 'react'
-import { Table } from '@nextui-org/react'
+import React from "react";
 
 
 type Props = {
@@ -13,7 +12,8 @@ type Props = {
 type Product = {
   _id :String,
   productname :String,
-  productdetail :String
+  productdetail :String,
+  stock:String
 }
 export async function getServerSideProps() {
   try {
@@ -34,7 +34,28 @@ const Home = (props:Props)=>{
   return(
 <div>
   <Layout/>
-
+    <table>
+      <tbody>
+        <tr>
+          <th>Product Name</th>
+          <th>Product Detail</th>
+          <th>Product Stock</th>
+          <th></th>
+          <th></th>
+        </tr>
+        {products.map((product , index)=>{
+          return (
+            <tr key={index}>
+              <td>{product.productname}</td>
+              <td>{product.productdetail}</td>
+              <td>{product.stock}</td>
+              <td><a href={`/edit${product._id}`}>Edit</a></td>
+              <td><button>Delete</button></td>
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
 </div>
 
   )

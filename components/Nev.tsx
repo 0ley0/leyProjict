@@ -10,7 +10,7 @@ const Nev = () => {
             <a href="/">My Products</a>
           </li>
           <li>
-            <a href="#">Add Product</a>
+            <a href="/addproduct">Add Product</a>
           </li>
         </ul>
       </div>
