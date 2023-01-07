@@ -66,7 +66,7 @@ const Home = (props:Props)=>{
               <td>{product.productname}</td>
               <td>{product.productdetail}</td>
               <td>{product.stock}</td>
-              <td><a href={`/edit${product._id}`}>Edit</a></td>
+              <td><a href={`/edit/${product._id}`}>Edit</a></td>
               <td><button onClick={()=>{handleDelete(product._id as String)}}>Delete</button></td>
             </tr>
           )
