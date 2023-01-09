@@ -9,6 +9,15 @@ type Props = {
   products : [Product]
 }
 
+type searcha = {
+  searcha : [Searcha]
+}
+
+type Searcha = {
+  productname :String,
+  productdetail :String,
+}
+
 type Product = {
   _id :String,
   productname :String,
@@ -31,6 +40,10 @@ export async function getServerSideProps() {
 
 const Home = (props:Props)=>{
   const [products , setpProducts] = useState<[Product]>(props.products)
+  const [searchreProduct,setSearchProduct] = useState('')
+  const [error , setError] = useState('')
+  const [ressearch , setRessearch] = useState([])
+
 
   const handleDelete = async(productid:String)=>{
     try {
@@ -48,9 +61,33 @@ const Home = (props:Props)=>{
       console.log(err + 'not delete')
     }
   }
+
+  const handSearch = async (searchProduct:String) => {
+     let res = await fetch('http://localhost:3000/api/Search' ,
+     {method:'POST' , body:JSON.stringify({searchProduct}) , 
+     headers: {
+      Accept: 'application/json, test/plain, */*',
+      "Content-Type" : "application/json"
+  }})
+  let searcha = await res.json();
+  setSearchProduct('')
+  setRessearch(searcha)
+  console.log(searcha)
+  } 
+  
+   
   return(
 <div>
   <Layout/>
+  <div>
+   <input type='text'
+   placeholder='SearchProductname'
+   onChange={(e)=>setSearchProduct(e.target.value)}
+   value={searchreProduct}>
+   </input>
+   <button onClick={()=>{handSearch(searchreProduct as String)}}>Search</button>
+    </div>
+    
     <table>
       <tbody>
         <tr>
@@ -73,6 +110,15 @@ const Home = (props:Props)=>{
         })}
       </tbody>
     </table>
+    <div>
+      {ressearch.map((reew:any , index:any)=>{
+        return (<ul key={index}>
+          <li>{reew.productname}</li>
+          <li>{reew.productdetail}</li>
+          <li>{reew.stock}</li>
+        </ul>)
+      })}
+    </div>
 </div>
 
   )
