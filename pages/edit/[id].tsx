@@ -1,6 +1,7 @@
 import Layout from "../../components/Layout";
 import React, { useState } from "react";
 import { GetServerSidePropsResult, GetStaticPropsContext } from "next";
+import styled from '../../components/styles/Nav.module.css'
 
 type PageParams = {
   id:any
@@ -109,28 +110,35 @@ const Edit =({product:{_id , productname , productdetail ,stock }}: ContentPageP
     <div>
         <Layout/>
         <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="productname">Product Name</label>
+                <div className={styled.col_3}>
+                    <label htmlFor="productname"></label>
                     <input type="text"
                     name="productname"
                     placeholder="Product Name"
                     onChange={(e)=>setPostproductname(e.target.value)}
                     value={postproductname}></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
+
                 </div>
-                <div>
-                    <label htmlFor="productdetail">Product Detail</label>
-                    <textarea name="productdatail"
+                <div className={styled.col_3}>
+                    <label htmlFor="productdetail"></label>
+                    <input name="productdatail"
                     placeholder="Product Name"
                     onChange={(e)=>setPostproductdetail(e.target.value)}
-                    value={postproductdetail}></textarea>
+                    value={postproductdetail}></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
                 </div>
-                <div>
-                    <label htmlFor="stock">Stock</label>
+                <div className={styled.col_3}>
+                    <label htmlFor="stock"></label>
                     <input type="text"
                     name="stock"
                     placeholder="Stock"
                     onChange={(e)=>setPoststock(e.target.value)}
                     value={poststock}></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
                 </div>
                 <div><button>Update</button>
                 </div>

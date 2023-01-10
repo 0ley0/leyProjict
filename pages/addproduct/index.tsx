@@ -1,5 +1,6 @@
 import Layout from "../../components/Layout";
 import React,{useState} from "react";
+import styled from '../../components/styles/Nav.module.css'
 
 
 const index =() =>{
@@ -25,6 +26,7 @@ const index =() =>{
             res = await res.json();
             setProductsname('')
             setProductdetail('')
+            setStock('')
             setError('')
             setMassage('add success')
             } catch (errMessage : any) {
@@ -37,30 +39,42 @@ const index =() =>{
         <div>
             <Layout/>
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="productname">Product Name</label>
+
+                <div className={styled.col_3}>
                     <input type="text"
                     name="productname"
                     placeholder="Product Name"
                     onChange={(e)=>setProductsname(e.target.value)}
                     value={productname}></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
+                    <label htmlFor="productname"></label>
                 </div>
-                <div>
-                    <label htmlFor="productdetail">Product Detail</label>
-                    <textarea name="productdatail"
-                    placeholder="Product Name"
+
+                <div className={styled.col_3}>
+                    <input name="productdatail"
+                    placeholder="Product Detail"
                     onChange={(e)=>setProductdetail(e.target.value)}
-                    value={productdetail}></textarea>
+                    value={productdetail}
+                    type='text'></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
+                    <label htmlFor="productdetail"></label>
                 </div>
-                <div>
-                    <label htmlFor="stock">Stock</label>
+
+                <div className={styled.col_3}>
                     <input type="text"
                     name="stock"
                     placeholder="Stock"
                     onChange={(e)=>setStock(e.target.value)}
                     value={stock}></input>
+                    <span className={styled.highlight}></span>
+                    <span className={styled.bar}></span>
+                    <label htmlFor="stock"></label>
                 </div>
+
                 <div><button>Add Product</button>
+
                 </div>
                 <div>
                     {error ? error : <div>{error}</div>}

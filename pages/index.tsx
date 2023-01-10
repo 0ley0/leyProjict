@@ -80,18 +80,22 @@ const Home = (props:Props)=>{
   return(
 <div>
   <Layout/>
-  <div>
+  <div className={style.col_3}>
    <input type='text'
-   placeholder='SearchProductname'
    onChange={(e)=>setSearchProduct(e.target.value)}
-   value={searchreProduct}>
+   value={searchreProduct}
+   placeholder='Search Product'>
    </input>
+   <span className={style.highlight}></span>
+   <span className={style.bar}></span>
+   <label htmlFor='searchproduct'></label>
+   <br></br>
    <button onClick={()=>{handSearch(searchreProduct as String)}}>Search</button>
     </div>
     
     <table className={style.style_table}>
-      <tbody >
-        <tr >
+      <tbody>
+        <tr>
           <th>Product Name</th>
           <th>Product Detail</th>
           <th>Product Stock</th>
