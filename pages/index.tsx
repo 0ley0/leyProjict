@@ -3,6 +3,7 @@ import clientPromise from '../lib/mongodb'
 import Layout from '../components/Layout'
 import { useState } from 'react'
 import React from "react";
+import style from '../components/styles/Nav.module.css'
 
 
 type Props = {
@@ -88,37 +89,34 @@ const Home = (props:Props)=>{
    <button onClick={()=>{handSearch(searchreProduct as String)}}>Search</button>
     </div>
     
-    <table>
-      <tbody>
-        <tr>
+    <table className={style.style_table}>
+      <tbody >
+        <tr >
           <th>Product Name</th>
           <th>Product Detail</th>
           <th>Product Stock</th>
           <th></th>
           <th></th>
         </tr>
-        {products.map((product , index)=>{
-          return (
-            <tr key={index}>
-              <td>{product.productname}</td>
-              <td>{product.productdetail}</td>
-              <td>{product.stock}</td>
-              <td><a href={`/edit/${product._id}`}>Edit</a></td>
-              <td><button onClick={()=>{handleDelete(product._id as String)}}>Delete</button></td>
-            </tr>
-          )
-        })}
+          {ressearch?.length > 0 ? <>{ressearch.map((search:any , index:any)=>{
+            return (<tr key={index}>
+              <td>{search.productname}</td>
+              <td>{search.productdetail}</td>
+              <td>{search.stock}</td>
+              <td><a href={`/edit/${search._id}`}>Edit</a></td>
+              <td><button onClick={()=>{handleDelete(search._id)}}>Delete</button></td>
+            </tr>)
+          })}</> : <>{products.map((products , index)=>{
+            return (<tr key={index}>
+              <td>{products.productname}</td>
+              <td>{products.productdetail}</td>
+              <td>{products.stock}</td>
+              <td><a href={`/edit/${products._id}`}>Edit</a></td>
+              <td><button onClick={()=>{handleDelete(products._id)}}>Delete</button></td>
+            </tr>)
+          })}</>}
       </tbody>
     </table>
-    <div>
-      {ressearch.map((reew:any , index:any)=>{
-        return (<ul key={index}>
-          <li>{reew.productname}</li>
-          <li>{reew.productdetail}</li>
-          <li>{reew.stock}</li>
-        </ul>)
-      })}
-    </div>
 </div>
 
   )

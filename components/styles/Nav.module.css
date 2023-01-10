@@ -18,3 +18,35 @@
 .navitem ul li a {
     text-decoration: none;
 }
+
+.style_table {
+    background-color: #d4d4d4;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.style_table tbody tr th {
+    background-color: #428551;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: left;
+    
+}
+
+.style_table tbody tr td {
+    font-family: 'Courier New', Courier, monospace;
+}
+.style_table th,
+.style_table td {
+    padding: 12px 15px;
+    
+}
+
+.style_table tbody tr {
+    border-bottom: 1px white;
+}
