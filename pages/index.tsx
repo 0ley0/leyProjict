@@ -89,10 +89,11 @@ const Home = (props:Props)=>{
    <span className={style.highlight}></span>
    <span className={style.bar}></span>
    <label htmlFor='searchproduct'></label>
-   <br></br>
-   <button onClick={()=>{handSearch(searchreProduct as String)}}>Search</button>
+   <div className={style.btn_btn_1} onClick={()=>{handSearch(searchreProduct as String)}}><span>Search</span></div>
+   {/* <button onClick={()=>{handSearch(searchreProduct as String)}}>Search</button> */}
     </div>
-    
+
+    <div className={style.container_table}>
     <table className={style.style_table}>
       <tbody>
         <tr>
@@ -106,7 +107,7 @@ const Home = (props:Props)=>{
             return (<tr key={index}>
               <td>{search.productname}</td>
               <td>{search.productdetail}</td>
-              <td>{search.stock}</td>
+              <td>{search.stock} ea.</td>
               <td><a href={`/edit/${search._id}`}>Edit</a></td>
               <td><button onClick={()=>{handleDelete(search._id)}}>Delete</button></td>
             </tr>)
@@ -114,13 +115,14 @@ const Home = (props:Props)=>{
             return (<tr key={index}>
               <td>{products.productname}</td>
               <td>{products.productdetail}</td>
-              <td>{products.stock}</td>
+              <td>{products.stock} ea.</td>
               <td><a href={`/edit/${products._id}`}>Edit</a></td>
               <td><button onClick={()=>{handleDelete(products._id)}}>Delete</button></td>
             </tr>)
           })}</>}
       </tbody>
     </table>
+    </div>
 </div>
 
   )

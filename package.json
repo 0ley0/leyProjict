@@ -16,5 +16,22 @@
     "@types/node": "18.7.5",
     "@types/react": "16.9.17",
     "typescript": "4.6.3"
-  }
+  },
+  "name": "leyprojict",
+  "description": "[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0ley0/leyProjict.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/0ley0/leyProjict/issues"
+  },
+  "homepage": "https://github.com/0ley0/leyProjict#readme"
 }

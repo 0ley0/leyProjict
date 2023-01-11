@@ -70,7 +70,7 @@ export async function getStaticPaths() {
     }
 }
 
-const Edit =({product:{_id , productname , productdetail ,stock }}: ContentPageProps)=>{
+const Edit = ({product:{_id , productname , productdetail ,stock }}: ContentPageProps)=>{
   const [postproductname , setPostproductname] = useState(productname);
   const [postproductdetail , setPostproductdetail] = useState(productdetail);
   const [poststock , setPoststock] = useState(stock)
@@ -109,6 +109,7 @@ const Edit =({product:{_id , productname , productdetail ,stock }}: ContentPageP
   return (
     <div>
         <Layout/>
+        <div className={styled.container}>
         <form onSubmit={handleSubmit}>
                 <div className={styled.col_3}>
                     <label htmlFor="productname"></label>
@@ -126,13 +127,14 @@ const Edit =({product:{_id , productname , productdetail ,stock }}: ContentPageP
                     <input name="productdatail"
                     placeholder="Product Name"
                     onChange={(e)=>setPostproductdetail(e.target.value)}
-                    value={postproductdetail}></input>
+                    value={postproductdetail}
+                    type='text'></input>
                     <span className={styled.highlight}></span>
                     <span className={styled.bar}></span>
                 </div>
                 <div className={styled.col_3}>
                     <label htmlFor="stock"></label>
-                    <input type="text"
+                    <input type="number"
                     name="stock"
                     placeholder="Stock"
                     onChange={(e)=>setPoststock(e.target.value)}
@@ -147,6 +149,7 @@ const Edit =({product:{_id , productname , productdetail ,stock }}: ContentPageP
                     {massage ? massage : <div>{massage}</div>}
                 </div>
             </form>
+            </div>
     </div>
   )
 }

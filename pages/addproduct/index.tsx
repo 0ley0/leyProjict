@@ -38,7 +38,8 @@ const index =() =>{
     return(
         <div>
             <Layout/>
-            <form onSubmit={handleSubmit}>
+            <div className={styled.container}>
+              <form onSubmit={handleSubmit}>
 
                 <div className={styled.col_3}>
                     <input type="text"
@@ -63,7 +64,7 @@ const index =() =>{
                 </div>
 
                 <div className={styled.col_3}>
-                    <input type="text"
+                    <input type="number"
                     name="stock"
                     placeholder="Stock"
                     onChange={(e)=>setStock(e.target.value)}
@@ -82,6 +83,7 @@ const index =() =>{
                 </div>
             </form>
         </div>
+    </div>
     )
 }
 export default index;
